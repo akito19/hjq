@@ -1,0 +1,61 @@
+name:                hjq
+version:             0.1.0.0
+github:              "akito19/hjq"
+license:             BSD3
+author:              "Akito Kasai"
+maintainer:          "kasai@akito19.com"
+copyright:           "2019 Akito Kasai"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/akito19/hjq#readme>
+
+dependencies:
+  - base >= 4.9 && < 5
+  - attoparsec
+  - aeson
+  - lens-aeson
+  - aeson-pretty
+  - text
+  - vector
+  - unordered-containers
+  - array
+  - lens
+  - errors
+  - bytestring
+
+library:
+  source-dirs: src
+
+executables:
+  hjq-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+      - hjq
+
+tests:
+  hjq-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -Wall
+    dependencies:
+    - hjq
+    - HUnit
